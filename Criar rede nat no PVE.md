@@ -60,6 +60,7 @@ iface rede_nat inet static
 # tee -a /etc/dnsmasq.conf <<EOF
 interface=rede_nat
 dhcp-range=10.255.255.2,10.255.255.254,infinite
+dhcp-option=option:dns-server,1.1.1.1,8.8.8.8
 EOF
 ```
 
