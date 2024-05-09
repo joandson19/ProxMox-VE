@@ -45,3 +45,25 @@ iface rede_nat inet static
 ```
 
 ## Agora a rede "10.255.255.0/24" está toda masquerade e pode usar em sua vms os ips de 10.255.255.2-10.255.255.254 que estaram navegaveis.
+
+
+# Bonús... Vamos adicionar um dhcp server para a interface net
+## Instale o serviço
+
+```
+# apt install dnsmasq
+```
+
+## Configure
+
+```
+# tee -a /etc/dnsmasq.conf <<EOF
+interface=rede_nat
+dhcp-range=10.255.255.2,10.255.255.254,infinite
+EOF
+```
+
+## Reinicie o serviço
+
+```
+# service dnsmasq restart
